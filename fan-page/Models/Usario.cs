@@ -2,32 +2,32 @@
 
 namespace fan_page.Models
 {
-    public class User
+    public class Usario : ClasseBase
     {
+
         [Required]
-        public int Id { get; set; }
-        [Required]
-        public string UserName { get; set; }
+        public string NomeDoUsuario { get; set; }
         [Required]
         [RegularExpression("@\"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$\"\r\n")]
-        public string Password { get; set; }
+        public string Senha { get; set; }
         [Required]
         [Compare("Password")]
-        public string ConfirmePassword { get; set; }
+        public string ConfirmacaoDaSenha { get; set; }
         [Required]
         [RegularExpression("@\"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$\"\r\n")]
         public string Email { get; set; }
         [Required]
         [Compare("Email")]
-        public string ConfirmeEmail { get; set; }
+        public string ConfirmacaoEmail { get; set; }
         [Required]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime DataDeAniversario { get; set; }
         [Required]
-        public string ProfileImage { get; set; }
+        public string ImagemDoPerfil { get; set; }
+        public DateTime DataDeCriacao { get; set; }
         public enum Type 
         {
-            Producer,
-            Consumer
+            Criador,
+            Consumidor
         }
     }
 }
