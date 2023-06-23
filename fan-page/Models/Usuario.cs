@@ -2,7 +2,7 @@
 
 namespace fan_page.Models
 {
-    public class Usario : ClasseBase
+    public class Usuario : ClasseBase
     {
 
         [Required]
