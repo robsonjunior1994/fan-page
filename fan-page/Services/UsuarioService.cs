@@ -1,27 +1,51 @@
-﻿using fan_page.Models;
+﻿using fan_page.Infraestrutura.Repository;
+using fan_page.Models;
 
 namespace fan_page.Services
 {
     public class UsuarioService : IUsuarioService
     {
-        public void CriarAsync(Usuario usuario)
+        private readonly IUsuarioRepository _repository;
+        public UsuarioService(IUsuarioRepository usuarioRepository)
         {
-            //Preciso resolver como manipular imagem, nesse momento vou receber a imagem e armazenar como um caminho url para exibir posteriorment
-            //Precisamos ir no banco verificar se nomeDeUsuario e Email já existem
-            //Usar o banco para armazenar
-            throw new NotImplementedException();
+            _repository = usuarioRepository;
         }
-        public Usuario AtualizarAsync(Usuario usuario)
+        public async void CriarAsync(Usuario usuario, IFormFile imageFile)
+        {
+            var existeNomeDeUsuario = _repository.BuscarUsuario(usuario.NomeDoUsuario);
+            var existeEmailDoUsuario = _repository.BuscarUsuario(usuario.Email);
+
+            if(existeNomeDeUsuario != null  || existeEmailDoUsuario != null) 
+            {
+                return;
+            }
+
+            // Gere um nome de arquivo único para a imagem
+            string fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+
+            // Determine o caminho completo para salvar a imagem
+            string filePath = Path.Combine("C:\\projetos\\fan-page\\fan-page\\Midias\\FotoDePerfil", fileName);
+
+            usuario.ImagemDoPerfil = filePath;
+            // Salve a imagem no disco
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await imageFile.CopyToAsync(fileStream);
+            }
+
+            _repository.CriarUsuario(usuario);
+        }
+        public async Task<Usuario> AtualizarAsync(Usuario usuario)
         {
             throw new NotImplementedException();
         }
 
-        public void DesativarAsync(Usuario usuario)
+        public async void DesativarAsync(Usuario usuario)
         {
             throw new NotImplementedException();
         }
 
-        public Usuario GetUsuarioAsync(Usuario usuario)
+        public async Task<Usuario> GetUsuarioAsync(Usuario usuario)
         {
             throw new NotImplementedException();
         }
