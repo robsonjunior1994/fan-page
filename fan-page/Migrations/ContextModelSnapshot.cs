@@ -3,20 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using fan_page.Infraestrutura;
 
 #nullable disable
 
-namespace fan_page.Infraestrutura.Migrations
+namespace fan_page.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230624005921_subindoUsuario")]
-    partial class subindoUsuario
+    partial class ContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,7 +49,6 @@ namespace fan_page.Infraestrutura.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagemDoPerfil")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NomeDoUsuario")
@@ -61,6 +57,9 @@ namespace fan_page.Infraestrutura.Migrations
 
                     b.Property<string>("Senha")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Token")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

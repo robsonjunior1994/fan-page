@@ -6,5 +6,7 @@ namespace fan_page.Infraestrutura.Repository
     {
         void CriarUsuario(Usuario usuario);
         Usuario BuscarUsuario(string valor);
+
+        Usuario VerificarUsuarioParaLogin(string email, string senha);
     }
 }
