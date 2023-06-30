@@ -12,7 +12,7 @@ using fan_page.Infraestrutura;
 namespace fan_page.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230628011056_primeira")]
+    [Migration("20230630004324_primeira")]
     partial class primeira
     {
         /// <inheritdoc />
@@ -24,6 +24,32 @@ namespace fan_page.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("fan_page.Models.Publicacao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CaminhoImagemDaPublicacao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DataDeCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdUsuario")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Texto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Publicacao");
+                });
 
             modelBuilder.Entity("fan_page.Models.Usuario", b =>
                 {

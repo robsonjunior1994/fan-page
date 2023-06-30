@@ -22,6 +22,32 @@ namespace fan_page.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("fan_page.Models.Publicacao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CaminhoImagemDaPublicacao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DataDeCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdUsuario")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Texto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Publicacao");
+                });
+
             modelBuilder.Entity("fan_page.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")

@@ -12,6 +12,22 @@ namespace fan_page.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Publicacao",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdUsuario = table.Column<int>(type: "int", nullable: false),
+                    Texto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DataDeCriacao = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CaminhoImagemDaPublicacao = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Publicacao", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Usuario",
                 columns: table => new
                 {
@@ -36,6 +52,9 @@ namespace fan_page.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Publicacao");
+
             migrationBuilder.DropTable(
                 name: "Usuario");
         }

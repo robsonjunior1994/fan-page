@@ -20,7 +20,9 @@ namespace fan_page.Services
                 throw new Exception("nomeDeUsuario ou E-mail existente");
             }
 
-            SalvarImagemPerfilUsuarioAsync(usuario, imageFile);
+            var caminhoDaImagem = SalvaImagemEmDisco(imageFile);
+
+            usuario.ImagemDoPerfil = caminhoDaImagem;
 
             _repository.CriarUsuario(usuario);
         }
@@ -32,6 +34,8 @@ namespace fan_page.Services
             {
                 var token = GerarToken(login);
                 usuario.Token = token;
+
+                _repository.Atualizar(usuario);
                 return token;
             }
             
@@ -78,7 +82,8 @@ namespace fan_page.Services
             return false;
         }
 
-        private static void SalvarImagemPerfilUsuarioAsync(Usuario usuario, IFormFile imageFile)
+        //Esse método se repete em PublicacaoService, posso verificar a possibilidade de levar ele para se reaproveitado
+        private static string SalvaImagemEmDisco(IFormFile imageFile)
         {
             // Gere um nome de arquivo único para a imagem
             string fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
@@ -86,12 +91,13 @@ namespace fan_page.Services
             // Determine o caminho completo para salvar a imagem
             string filePath = Path.Combine("C:\\projetos\\fan-page\\fan-page\\Midias\\FotoDePerfil", fileName);
 
-            usuario.ImagemDoPerfil = filePath;
             // Salve a imagem no disco
             using (var fileStream = new FileStream(filePath, FileMode.Create))
             {
                 imageFile.CopyToAsync(fileStream);
             }
+
+            return filePath;
         }
     }
 }

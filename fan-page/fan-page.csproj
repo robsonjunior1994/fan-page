@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <Folder Include="Midias\FotoDePerfil\" />
+    <Folder Include="Midias\FotoPostagem\" />
   </ItemGroup>
 
 </Project>

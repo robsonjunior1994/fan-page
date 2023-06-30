@@ -6,6 +6,7 @@ namespace fan_page.Infraestrutura
     public class Context : DbContext
     {
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Publicacao> Publicacao { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
         {
