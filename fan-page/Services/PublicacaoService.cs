@@ -12,6 +12,13 @@ namespace fan_page.Services
             _publicacaoRepository = publicacaoRepository;
             _usuarioRepository = usuarioRepository;
         }
+
+        public IEnumerable<Publicacao> PegarFotosPublicadasNoPerfil(int id)
+        {
+            var fotosDoPerfil = _publicacaoRepository.PegarFotosPublicadasNoPerfil(id);
+            return fotosDoPerfil;
+        }
+
         public void Publicar(string tokenUsuario, string texto, IFormFile imagem)
         {
             

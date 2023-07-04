@@ -9,18 +9,27 @@ namespace fan_page.Controllers
     public class PerfilController : ControllerBase
     {
         private readonly IPublicacaoService _publicacaoService;
-        public PerfilController(IPublicacaoService publicacaoService)
+        private readonly IUsuarioService _usuarioService;
+        public PerfilController(IPublicacaoService publicacaoService, IUsuarioService usuarioService)
         {
             _publicacaoService = publicacaoService;
+            _usuarioService= usuarioService;
         }
 
-        [Route("")]
         [HttpGet]
-        public ActionResult Perfil()
+        [Route("Usuario/{nomeDoUsuario}")]
+        
+        public ActionResult Perfil(string nomeDoUsuario)
         {
-            //vai retornar as publicas, os seguidores, e quem ele segue 
-            //aqui vai ficar o campo disponível para ele fazer publicações
-            return Ok();
+            //Verificar se usuário assina esse perfil, se não redirecionar para página de assinatura
+            //Pegar usuário junto com a foto de perfil
+            var usuario = _usuarioService.PegarUsuarioPorNomeDeUsuario(nomeDoUsuario);
+            //Pegar fotos publicadas no seu perfil
+            var listaDeFotos = _publicacaoService.PegarFotosPublicadasNoPerfil(usuario.Id);
+            //Pegar lista de seguidores
+            //Pegar lista de quem ele segue
+
+            return Ok(new {FotoDePerfil = usuario.ImagemDoPerfil, ListaDeFotos = listaDeFotos });
         }
 
         [Route("Publicar")]

@@ -9,6 +9,13 @@ namespace fan_page.Infraestrutura.Repository
         {
             _context = new Context();
         }
+
+        public IEnumerable<Publicacao> PegarFotosPublicadasNoPerfil(int id)
+        {
+            IEnumerable<Publicacao> fotosDoPerfil = _context.Publicacao.ToList().Where(x => x.IdUsuario == id);
+            return fotosDoPerfil;
+        }
+
         public void Publicar(Publicacao publicacao)
         {
             _context.Publicacao.Add(publicacao);

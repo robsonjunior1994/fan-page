@@ -54,6 +54,16 @@ namespace fan_page.Services
             }
         }
 
+        public Usuario PegarUsuarioPorNomeDeUsuario(string username)
+        {
+            var usuario = _repository.BuscarUsuario(username);
+            if(usuario == null)
+            {
+                throw new Exception("Usuário não encontrado");
+            }
+            return usuario;
+        }
+
         public async Task<Usuario> Atualizar(Usuario usuario)
         {
             throw new NotImplementedException();
@@ -99,5 +109,6 @@ namespace fan_page.Services
 
             return filePath;
         }
+
     }
 }

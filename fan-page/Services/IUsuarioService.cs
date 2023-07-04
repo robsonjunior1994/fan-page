@@ -10,5 +10,6 @@ namespace fan_page.Services
         void Desativar(Usuario usuario);
         Task<Usuario> GetUsuario(Usuario usuario);
         string FazerLogin(Login login);
+        Usuario PegarUsuarioPorNomeDeUsuario(string username);
     }
 }
