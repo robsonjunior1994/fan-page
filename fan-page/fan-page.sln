@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fan-page", "fan-page.csproj", "{DC0FE24D-E1BC-4BB3-B132-EA050025A3A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fan-page-mvc", "..\fan-page-mvc\fan-page-mvc.csproj", "{E730EDB7-B796-467F-9E71-F27D1E77A5E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DC0FE24D-E1BC-4BB3-B132-EA050025A3A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC0FE24D-E1BC-4BB3-B132-EA050025A3A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC0FE24D-E1BC-4BB3-B132-EA050025A3A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E730EDB7-B796-467F-9E71-F27D1E77A5E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E730EDB7-B796-467F-9E71-F27D1E77A5E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E730EDB7-B796-467F-9E71-F27D1E77A5E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E730EDB7-B796-467F-9E71-F27D1E77A5E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

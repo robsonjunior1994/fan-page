@@ -18,7 +18,6 @@ namespace fan_page.Controllers
 
         [HttpGet]
         [Route("Usuario/{nomeDoUsuario}")]
-        
         public ActionResult Perfil(string nomeDoUsuario)
         {
             //Verificar se usuário assina esse perfil, se não redirecionar para página de assinatura

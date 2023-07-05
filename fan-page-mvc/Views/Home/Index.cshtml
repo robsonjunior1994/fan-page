@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Welcome</h1>
+    <form action="/home/post" method="post">
+        <input type="text" value="nome do usuario" name="NomeDoUsuario" /><br />
+        <input type="text" value="senha" name="Senha"/><br />
+        <input type="text" value="confirmar senha" name="ConfirmacaoDaSenha" /><br />
+        <input type="text" value="email" name="Email" /><br />
+        <input type="text" value="confirmar e-mail" name="ConfirmacaoEmail" /><br />
+        <input type="date" value="data de aniversário" name="DataDeAniversario" /><br />
+        <select name="Type"><br />
+            <option>Criador</option>
+            <option>Consumidor</option>
+        </select>
+        <button value="enviar" type="submit">enviar</button>
+    </form><br /><br />
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
